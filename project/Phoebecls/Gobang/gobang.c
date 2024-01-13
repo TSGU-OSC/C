@@ -16,18 +16,18 @@ int main() {
 
   while (1) {
     printBoard(board);
-    printf("Íæ¼Ò %c£¬ÇëÊäÈëÄúÏëÏÂµÄÎ»ÖÃ£¨ÐÐ ÁÐ£©£º", player);
+    printf("çŽ©å®¶ %cï¼Œè¯·è¾“å…¥æ‚¨æƒ³ä¸‹çš„ä½ç½®ï¼ˆè¡Œ åˆ—ï¼‰ï¼š", player);
     scanf("%d %d", &row, &col);
 
     if (makeMove(board, row - 1, col - 1, player)) {
       if (checkWin(board, row - 1, col - 1)) {
         printBoard(board);
-        printf("Íæ¼Ò %c »ñÊ¤£¡\n", player);
+        printf("çŽ©å®¶ %c èŽ·èƒœï¼\n", player);
         break;
       }
       player = (player == 'X') ? 'O' : 'X';
     } else {
-      printf("ÒÑ¾­´æÔÚÆå×Ó£¬ÇëÖØÐÂÊäÈë¡£\n");
+      printf("å·²ç»å­˜åœ¨æ£‹å­ï¼Œè¯·é‡æ–°è¾“å…¥ã€‚\n");
     }
   }
 
@@ -62,16 +62,16 @@ int makeMove(char board[][BOARD_SIZE], int row, int col, char player) {
   if (row >= 0 && row < BOARD_SIZE && col >= 0 && col < BOARD_SIZE &&
       board[row][col] == EMPTY) {
     board[row][col] = player;
-    return 1; // ³É¹¦·ÅÖÃÆå×Ó
+    return 1; // æˆåŠŸæ”¾ç½®æ£‹å­
   }
-  return 0; // Î»ÖÃÎÞÐ§»òÒÑ±»Õ¼ÓÃ
+  return 0; // ä½ç½®æ— æ•ˆæˆ–å·²è¢«å ç”¨
 }
 
 int checkWin(char board[][BOARD_SIZE], int row, int col) {
   char player = board[row][col];
   int count;
 
-  // ¼ì²éË®Æ½·½Ïò
+  // æ£€æŸ¥æ°´å¹³æ–¹å‘
   for (int i = -4; i <= 0; i++) {
     count = 0;
     for (int j = 0; j < 5; j++) {
@@ -84,7 +84,7 @@ int checkWin(char board[][BOARD_SIZE], int row, int col) {
       return 1;
   }
 
-  // ¼ì²é´¹Ö±·½Ïò
+  // æ£€æŸ¥åž‚ç›´æ–¹å‘
   for (int i = -4; i <= 0; i++) {
     count = 0;
     for (int j = 0; j < 5; j++) {
@@ -97,7 +97,7 @@ int checkWin(char board[][BOARD_SIZE], int row, int col) {
       return 1;
   }
 
-  // ¼ì²é×ó¶Ô½ÇÏß
+  // æ£€æŸ¥å·¦å¯¹è§’çº¿
   for (int i = -4; i <= 0; i++) {
     count = 0;
     for (int j = 0; j < 5; j++) {
@@ -111,7 +111,7 @@ int checkWin(char board[][BOARD_SIZE], int row, int col) {
       return 1;
   }
 
-  // ¼ì²éÓÒ¶Ô½ÇÏß
+  // æ£€æŸ¥å³å¯¹è§’çº¿
   for (int i = -4; i <= 0; i++) {
     count = 0;
     for (int j = 0; j < 5; j++) {
@@ -125,5 +125,5 @@ int checkWin(char board[][BOARD_SIZE], int row, int col) {
       return 1;
   }
 
-  return 0; // Î´»ñÊ¤
+  return 0; // æœªèŽ·èƒœ
 }
